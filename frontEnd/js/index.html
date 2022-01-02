@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Labeler</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div id="logoText">
+        <h1>LABELER</h1>
+      </div>
+      <div class="navMenu">
+        <ul id="navList">
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Chat</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mainContainer">
+      <div class="sideNav" id="left">
+          <div class="sideNavSections">
+              <span>Batch No </span>
+          </div>
+          <div class="sideNavSections">
+              <span>Image No </span>
+          </div>
+          <div class="sideNavSections">
+              <div class="buttons"> 
+                  <button data-href="#" class="linkButton" >Next Batch</button>
+                </div>
+          </div>
+      </div>
+      <div id="labelBoardContainer">
+        <div id="boardTools">
+          <div class="toolsContainer">
+            <img src="./icons/tools/move.png" id="0" alt="selectTool" class="tools">
+          </div>
+          <div class="toolsContainer">
+            <img src="./icons/tools/rectangle.png" id="1" alt="rectTool" class="tools">
+          </div>
+          <div class="toolsContainer">
+            <img src="./icons/tools/circle.png" id="3" alt="circleTool" class="tools">
+          </div>
+        </div>
+        <canvas id="labelBoard" width="500" height="400">
+          check if firefox supports this.
+        </canvas>
+      </div>
+      <div class="sideNav" id="right">
+        <div class="sideNavSections column">
+          <h2>Task description</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ffffffffffffffffffffffffffffffffffffvoluptate dolores amet incidunt reprehenderit rem consectetur in quasi reiciendis dolor molestiae cupiditate quibusdam non perspiciatis, cumque magni ex praesentium nemo.</p>
+        </div>
+        <div class="sideNavSections">
+          <div class="buttons"> 
+            <button data-href="#" class="linkButton" >&#8592</button>
+            <button data-href="#" class="linkButton" > &#8594 </button>
+          </div>
+        </div>
+        <div class="sideNavSections">
+          <div class="buttons"> 
+            <button data-href="#" class="linkButton" >SUBMIT</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
+:root {
+  --scheme11: #453de3;
+  --scheme12: #4260cc;
+  --scheme13: #3d8de3;
+  --scheme21 : #79A4D9;
+  --scheme22 : #5ACBE6;
+  --scheme23 : #7CCCBF;
+  --scheme24 : #7FE3AC;
+  --scheme25 : #79D980;
+  
+}
+/* rock-3d-regular - latin */
+a{
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover{
+  color: var(--scheme25);
+}
+body {
+  margin: 0;
+  color: whitesmoke;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--scheme21);
+  height: 10vh;
+  align-items: center;
+  overflow: hidden;
+}
+.navbar::before {
+  content: "";
+  flex: 1;
+}
+.navbar #logoText {
+  flex: 1;
+  text-align: center;
+  font-family: "East Sea Dokdo";
+  font-size: 1.4em;
+}
+.navbar .navMenu {
+  display: flex;
+  flex: 1;
+  justify-content: right;
+}
+.navbar .navMenu #navList {
+  font-family: "Sigmar One";
+  width: 100%;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+.sideNav{
+    width: 20%;
+    background-color: var(--scheme21);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+.sideNav .sideNavSections.column{
+  flex-direction: column;
+  height: auto;
+  max-height: 40vh;
+  padding:10px;
+}
+.sideNav .sideNavSections.column p{
+  text-align: left;
+  overflow-wrap: break-word;
+  overflow-y : scroll;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+h2{
+  margin: 2px;
+}
+.sideNav .sideNavSections{
+  font-size: 1em;
+    font-family: 'Sigmar One';
+    height: 10vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sideNav .sideNavSections > *{
+  max-width: 100%;
+}
+.sideNav .sideNavSections .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+.sideNav .sideNavSections .buttons >button{
+  background-color: inherit;
+  font-family: inherit;
+  color: inherit;
+  font-size: 1em;
+  border: none;
+  height: 100%;
+  flex: 1;
+}
+.sideNav .sideNavSections .buttons >button:active{
+    box-shadow: 5px 5px 7px rgb(27, 36, 36) inset , -5px 0px 7px rgb(27, 36, 36) inset;
+    background-color: var(--scheme22);
+}
+.sideNav .sideNavSections .buttons >button:hover{
+  cursor:pointer;
+}
+.sideNav#left{
+    box-shadow: -5px 5px 7px rgb(27, 36, 36) inset;
+}
+.sideNav#right{
+    box-shadow: 5px 5px 7px rgb(27, 36, 36) inset;
+
+}
+ .mainContainer{
+    display: flex;
+    flex-direction: row;  
+ }
+
+ #labelBoardContainer{
+    box-shadow: 0px 5px 7px rgb(33, 51, 51) inset;
+    width: 60%;
+    max-height: 90vh;
+    background-color: rgb(211, 214, 214);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+ }
+
+ #labelBoard{
+     background-color: white;
+     border: 2px solid var(--scheme21);
+     max-width: 90%;
+     max-height: 90%;
+ }
+
+ #boardTools{
+  max-height: 100%;
+  width : 3%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  margin-right: 3px;
+  flex-direction: column;
+ }
+
+ #boardTools .toolsContainer{
+   width: 100%;
+   padding : 2px
+ }
+
+ .toolsContainer .tools{
+   width: 100%;
+ }
+
