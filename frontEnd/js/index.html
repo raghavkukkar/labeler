@@ -45,10 +45,15 @@
           <div class="toolsContainer">
             <img src="./icons/tools/circle.png" id="3" alt="circleTool" class="tools">
           </div>
+          <div class="toolsContainer">
+              <input type="color" name="current" id="4" alt="colorPicker" class="tools">
+          </div>
         </div>
-        <canvas id="labelBoard" width="500" height="400">
-          check if firefox supports this.
-        </canvas>
+        
+          <canvas id="labelBoard" width="500" height="400">
+            check if firefox supports this.
+          </canvas>
+        
       </div>
       <div class="sideNav" id="right">
         <div class="sideNavSections column">
@@ -57,8 +62,8 @@
         </div>
         <div class="sideNavSections">
           <div class="buttons"> 
-            <button data-href="#" class="linkButton" >&#8592</button>
-            <button data-href="#" class="linkButton" > &#8594 </button>
+            <button data-href="#" class="linkButton directional" >&#8592</button>
+            <button data-href="#" class="linkButton directional" > &#8594 </button>
           </div>
         </div>
         <div class="sideNavSections">
@@ -68,6 +73,11 @@
         </div>
       </div>
     </div>
-    <script src="main.js"></script>
+    <script src="js/structures2.js"></script>
+    <script src="js/Shape.js"></script>
+    <script src="js/Rect.js"></script>
+    <script src="js/Circle.js"></script>
+    <script src="js/movableCanvas.js"></script>
+    <script src="js/main2.js"></script>
   </body>
 </html>

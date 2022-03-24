@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap");
 :root {
   --scheme11: #453de3;
-  --scheme12: #4260cc;
+  --scheme12: #4260cc; 
   --scheme13: #3d8de3;
   --scheme21 : #79A4D9;
   --scheme22 : #5ACBE6;
@@ -114,7 +114,7 @@ h2{
   background-color: inherit;
   font-family: inherit;
   color: inherit;
-  font-size: 1em;
+  /* font-size: 1em; */
   border: none;
   height: 100%;
   flex: 1;
@@ -152,17 +152,16 @@ h2{
  #labelBoard{
      background-color: white;
      border: 2px solid var(--scheme21);
-     max-width: 90%;
-     max-height: 90%;
  }
 
  #boardTools{
   max-height: 100%;
-  width : 3%;
+  width : 30px;
   overflow-y: scroll;
   scrollbar-width: none;
   display: flex;
   margin-right: 3px;
+  margin-left: 3px;
   flex-direction: column;
  }
 
@@ -173,5 +172,15 @@ h2{
 
  .toolsContainer .tools{
    width: 100%;
+   padding: 0;
+   border: 0;
  }
 
+#lol{
+  width : 10px;
+  padding: 0;
+}
+
+.directional{
+  font-size: 50px;
+}
