@@ -39,7 +39,7 @@ Circle.prototype.fresize = function(fx , fy){
   this.y *=fy;
   this.x2 *= fx;
   this.y2 *=fy;
-  this.stroke = Math.round(fx*this.stroke);
+  this.stroke *= fx;
   this.createPath();
 }
 

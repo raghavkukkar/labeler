@@ -3,6 +3,14 @@ function Shape(colour, stroke) {
   this.path = new Path2D();
   this.colour = colour;
 }
+
+Shape.prototype.setWidth = function(width){
+  if(typeof width === "number"){
+    this.stroke = width^0;
+  }else{
+    throw new Error("the argument for method setWidth is not a number")
+  }
+}
 Shape.prototype.getComplement = function () {
   let comp = "#";
   for (let i = 1; i < 7; i = i + 2) {

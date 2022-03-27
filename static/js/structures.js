@@ -3,5 +3,5 @@ function Resizable(main, sec = [], side = null) {
     this.sec = sec;
     this.side = side;
   }
-  //constructor for rect object .
+//constructor for rect object .
   

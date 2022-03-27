@@ -3,7 +3,9 @@ let context = canva.getContext("2d");
 let linkButton = document.getElementsByClassName("linkButton");
 let toolChangers = Array.from(document.getElementsByClassName("tools"));
 let colourPicker = toolChangers.find((e) => e.name === "current");
-let movable = new movableCanvas(canva, context, colourPicker.value, true);
+let slider = toolChangers.find((e) => e.name === "strokeWidth");
+
+let movable = new movableCanvas(canva, context, colourPicker.value, parseInt(slider.value), true);
 movable.bindEvents();
 movable.changeBackground("./background2.png");
 
@@ -37,20 +39,32 @@ toolChangers.forEach((x) => {
   });
 });
 window.addEventListener("click", (ev) => {
-    if (movable.resizable) {
-      movable.resizable = null;
-      movable.redrawing();
-    }
-  });
-  //delete shapes handler .
-  window.addEventListener("keydown", (ev) => {
-    if (ev.key === "Delete" && movable.resizable) {
-      movable.objectArray.splice(movable.objectArray.indexOf(movable.resizable.main), 1);
-      movable.resizable = null;
-      movable.redrawing();
-    }
-  });
+  if (movable.resizable) {
+    movable.resizable = null;
+    movable.redrawing();
+  }
+});
+//delete shapes handler .
+window.addEventListener("keydown", (ev) => {
+  if (ev.key === "Delete" && movable.resizable) {
+    movable.objectArray.splice(movable.objectArray.indexOf(movable.resizable.main), 1);
+    movable.resizable = null;
+    movable.redrawing();
+  }
+});
 
-colourPicker.addEventListener("change" , (ev) => {
+slider.addEventListener
+
+colourPicker.addEventListener("change", (ev) => {
   movable.setColour(ev.target.value);
+});
+
+slider.addEventListener("change" , (ev) => {
+  movable.setWidth(parseInt(ev.target.value));
+});
+
+slider.addEventListener("input" , (ev) => {
+  // console.log("hello");
+  // console.log(ev.target.value);
+  movable.setShapeWidth(ev.target.value);
 });

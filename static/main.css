@@ -184,3 +184,13 @@ h2{
 .directional{
   font-size: 50px;
 }
+
+.toolsContainer#sliderContainer{
+  height: 100px;
+}
+
+input[type="range"].tools.slider{
+  width: 100px;
+  transform-origin: 50px 50px;
+  transform: rotate(-90deg);
+}

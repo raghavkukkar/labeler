@@ -1,12 +1,3 @@
-/**
- * 
- * @todo resize logic for shapes 
- * @approch calculate the percentage increase/decrease in both the direction and multiply that to get new dimensions .
- * 
- * @todo save logic 
- * @cavaets scale the shapes according to the real dimension of the image. 
- * @returns 
- */
 
 function calculateDims(canvas) {
   let lbc = canvas.parentNode;
@@ -14,7 +5,7 @@ function calculateDims(canvas) {
 }
 
 
-function movableCanvas(canvas, context,defaultColour , mouseBinder = true) {
+function movableCanvas(canvas, context,defaultColour , strokeWidth, mouseBinder = true) {
   this.canvas = canvas;
   this.context = context;
   this.objectArray = [];
@@ -22,8 +13,61 @@ function movableCanvas(canvas, context,defaultColour , mouseBinder = true) {
   this.selectedColour = defaultColour;
   this.resizable = null;
   this.background = "";
+  this.strokeWidth = strokeWidth;
   if (mouseBinder) {
     this.tool = 0;
+  }
+}
+
+
+movableCanvas.prototype.save = function(){
+  this.canvas.offScreenCanvas = document.createElement("canvas");
+  let {offScreenCanvas} = this.canvas;
+  offScreenCanvas.width = this.background.width;
+  offScreenCanvas.height = this.background.height;
+  let offScreenContext = offScreenCanvas.getContext("2d");
+  offScreenContext.drawImage(this.background , 0 , 0 );
+  let tempObject  = {};
+  this.objectArray.forEach((x) => {
+    Object.assign(  tempObject , x);
+    tempObject.__proto__ = Object.getPrototypeOf(x);
+    tempObject.fresize(offScreenCanvas.width/this.canvas.width , offScreenCanvas.height/this.canvas.height);
+    offScreenContext.strokeStyle = tempObject.colour;
+    offScreenContext.lineWidth = tempObject.stroke;
+    offScreenContext.stroke(tempObject.path);
+  } ); 
+
+  offScreenCanvas.toBlob((x) => {
+    let formdata = new FormData();
+    if(x){
+      formdata.append("img" , x , "labeled1");
+      fetch("/upload" , {
+        method : "POST",
+        body : formdata
+      }).then((x) => {
+        console.log(x);
+      }).catch(x => console.error(x));
+    }
+  } , "image/png") ;
+
+  
+};
+
+movableCanvas.prototype.setShapeWidth = function (width) {
+  // console.log(width);
+  if(this.resizable){
+    console.log(width);
+    this.resizable.main.setWidth(Number(width));
+    this.redrawing();
+  }
+}
+
+
+movableCanvas.prototype.setWidth = function (width) {
+  if(typeof width === "number"){
+    this.strokeWidth = width^0;
+  }else{
+    throw new Error("the argument for method setWidth is not a number")
   }
 }
 
@@ -70,6 +114,8 @@ movableCanvas.prototype.resizeCanvas = function(){
 
 
 movableCanvas.prototype.changeBackground = function (uri) {
+  if(!uri)
+    return
   this.background = new Image();
   this.background.src = uri;
   this.background.onload = (ev) => {
@@ -136,13 +182,14 @@ function bindDown(ev) {
         }
         break;
       case 1:
-        this.add(new Rect(ev.offsetX, ev.offsetY ,0,0, this.selectedColour));
+        this.add(new Rect(ev.offsetX, ev.offsetY ,0,0, this.selectedColour , this.strokeWidth));
         break;
       case 3:
-        this.add(new Circle(ev.offsetX, ev.offsetY ,0, this.selectedColour));
+        this.add(new Circle(ev.offsetX, ev.offsetY ,0, this.selectedColour , this.strokeWidth));
         break;
       case 4:
         this.checkObject(ev.offsetX , ev.offsetY);
+        break;
       default:
         break;
     }
