@@ -41,6 +41,8 @@ movableCanvas.prototype.save = function(){
     let formdata = new FormData();
     if(x){
       formdata.append("img" , x , "labeled1");
+      formdata.append("name" , "raghav")
+      formdata.append("img2" , x , "labeled2")
       fetch("/upload" , {
         method : "POST",
         body : formdata
